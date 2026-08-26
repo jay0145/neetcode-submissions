@@ -1,0 +1,20 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+
+        #Solution with O(1) space complexity
+        #And O(n) time complexity
+
+        n = len(nums)
+
+        res = [0] * n
+
+        pre = 1
+        for i in range(n):
+            res[i] = pre
+            pre = pre * nums[i]
+        post = 1
+        for i in range(n-1, -1, -1):
+            res[i] = res[i] * post
+            post = post * nums[i]
+
+        return res
